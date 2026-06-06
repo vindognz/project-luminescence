@@ -4,7 +4,17 @@ const int BRIGHTNESS_PIN = PB3;
 
 // debounce variables
 unsigned long lastDebounceTime = 0;
-const unsigned debounceDelay = 50; // 50ms debounce
+const unsigned long debounceDelay = 50; // 50ms debounce
+
+// mode cycling
+enum Mode {
+    MODE_OFF,
+    MODE_ON,
+    MODE_FADE,
+    MODE_COUNT
+};
+
+Mode currentMode = MODE_OFF;
 
 void setup() {
     // initialize everything :)
@@ -29,15 +39,30 @@ void loop() {
     if ((millis() - lastDebounceTime) > debounceDelay) {
         if (reading != stableButtonState) {
             stableButtonState = reading;
+            // button pressed (low transition)
+            if (stableButtonState == LOW) {
+                currentMode = (Mode)((currentMode + 1) % MODE_COUNT);
+            }
         }
     }
 
     lastReading = reading;
 
-    // update LED to debounced button state
-    if (stableButtonState == LOW) {
-        digitalWrite(LED_PIN, HIGH); // button pressed
-    } else {
-        digitalWrite(LED_PIN, LOW); // button released
+    // handle LED based on mode
+    handleLED();
+}
+
+void handleLED() {
+    switch (currentMode) {
+        case MODE_OFF:
+            digitalWrite(LED_PIN, LOW);
+            break;
+        case MODE_ON:
+            digitalWrite(LED_PIN, HIGH);
+            break;
+        case MODE_FADE:
+            // 750 ms period blinking (will become fading soon)
+            digitalWrite(LED_PIN, (millis() / 750) % 2);
+            break;
     }
 }
