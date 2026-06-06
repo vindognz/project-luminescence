@@ -1,3 +1,19 @@
+const int HIGH = 1;
+const int LOW = 0;
+const int OUTPUT = 0;
+const int INPUT = 0;
+const int INPUT_PULLUP = 0;
+const int PB1;
+const int PB2;
+const int PB3;
+
+void pinMode(int PIN, int MODE) {}
+void digitalWrite(int PIN, int MODE) {}
+int digitalRead(int PIN) {}
+int millis() {}
+
+
+
 const int LED_PIN = PB1;
 const int BUTTON_PIN = PB2;
 const int BRIGHTNESS_PIN = PB3;

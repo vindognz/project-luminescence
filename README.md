@@ -1,11 +1,34 @@
-# Project Luminescence
+# **Project Luminescence** ✨
 
-This project is TOP SECRET, and a birthday present for my very special girlfriend.
-The plan is a heart shaped PCB, with 10 red LEDs scattered around the perimeter.
+A custom heart-shaped PCB with 10 red LEDs and 3 modes to cycle through. A very special birthday gift for an even more special person.
 
-A button will let you toggle between OFF, ON and BREATHE.
-I added a 1K Trimmer potentiometer, which will allow her to brighten or dim the leds easily.
-I decided on an ATTiny85 for the brains of this device, because I have several lying around, plus they're small and don't consume too much power.
-Speaking of power, I decided to use a CR2032 cell battery on the back of the PCB to power the board.
+---
 
-I think I'm mostly done with the hardware design, and will have to move onto firmware next!
+## **Hardware:**
+
+- **Microcontroller**: ATtiny85 (low power, tiny)
+- **Power**: CR2032 coin cell battery (mounted on back)
+- **LEDs**: 10× 5mm red LEDs arranged around the heart perimeter
+- **Input**: 6mm tactile push button (center-mounted)
+- **Brightness Control**: 1kΩ trimpot for smooth LED dimming
+
+---
+
+## **Firmware:**
+
+### Current Features:
+- 50ms button debouncing (rock-solid input)
+- Mode cycling: OFF → ON → FADE
+- Gamma-corrected PWM brightness control
+
+### In Progress:
+- Smooth breathing fade (replacing blinking)
+- Analog brightness control via trimpot
+
+---
+
+## **Notes**
+
+This is coming together beautifully. A few more firmware features, and some polish, then it's PCB manufacturing time!
+
+---
