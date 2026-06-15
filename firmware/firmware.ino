@@ -1,26 +1,10 @@
-const int HIGH = 1;
-const int LOW = 0;
-const int OUTPUT = 0;
-const int INPUT = 0;
-const int INPUT_PULLUP = 0;
-const int PB1;
-const int PB2;
-const int PB3;
-
-void pinMode(int PIN, int MODE) {}
-void digitalWrite(int PIN, int MODE) {}
-int digitalRead(int PIN) {}
-int millis() {}
-
-
-
 const int LED_PIN = PB1;
 const int BUTTON_PIN = PB2;
 const int BRIGHTNESS_PIN = PB3;
 
 // debounce variables
 unsigned long lastDebounceTime = 0;
-const unsigned long debounceDelay = 50; // 50ms debounce
+const unsigned long debounceDelay = 50;
 
 // mode cycling
 enum Mode {
@@ -32,12 +16,16 @@ enum Mode {
 
 Mode currentMode = MODE_OFF;
 
+// gamma correction for smooth brightness
+uint8_t gamma8(uint8_t x) {
+    return (uint16_t)x * x / 255;
+}
+
 void setup() {
-    // initialize everything :)
     pinMode(LED_PIN, OUTPUT);
     pinMode(BUTTON_PIN, INPUT_PULLUP);
     pinMode(BRIGHTNESS_PIN, INPUT);
-    digitalWrite(LED_PIN, LOW); // initialize the LED low
+    digitalWrite(LED_PIN, LOW);
 }
 
 void loop() {
@@ -46,16 +34,13 @@ void loop() {
 
     bool reading = digitalRead(BUTTON_PIN);
 
-    // if reading changed, reset debounce timer
     if (reading != lastReading) {
         lastDebounceTime = millis();
     }
 
-    // after debounce delay, update stable state
     if ((millis() - lastDebounceTime) > debounceDelay) {
         if (reading != stableButtonState) {
             stableButtonState = reading;
-            // button pressed (low transition)
             if (stableButtonState == LOW) {
                 currentMode = (Mode)((currentMode + 1) % MODE_COUNT);
             }
@@ -63,22 +48,26 @@ void loop() {
     }
 
     lastReading = reading;
-
-    // handle LED based on mode
     handleLED();
 }
 
 void handleLED() {
     switch (currentMode) {
         case MODE_OFF:
-            digitalWrite(LED_PIN, LOW);
+            analogWrite(LED_PIN, 0);
             break;
+        
         case MODE_ON:
-            digitalWrite(LED_PIN, HIGH);
+            analogWrite(LED_PIN, 255);
             break;
-        case MODE_FADE:
-            // 750 ms period blinking (will become fading soon)
-            digitalWrite(LED_PIN, (millis() / 750) % 2);
+        
+        case MODE_FADE: {
+            // smooth breathing effect with gamma correction
+            // 2 second period (2000ms)
+            float breathe = (sin(millis() / 300.0) + 1.0) / 2.0;  // 0 to 1
+            uint8_t brightness = gamma8((uint8_t)(breathe * 255));
+            analogWrite(LED_PIN, brightness);
             break;
+        }
     }
 }
