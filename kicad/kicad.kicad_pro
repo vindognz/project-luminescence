@@ -90,6 +90,7 @@
         "extra_footprint": "warning",
         "footprint": "error",
         "footprint_filters_mismatch": "ignore",
+        "footprint_scaled_with_pads": "warning",
         "footprint_symbol_field_mismatch": "warning",
         "footprint_symbol_mismatch": "warning",
         "footprint_type_mismatch": "ignore",
@@ -657,7 +658,7 @@
         "uuid": "5c04a1b4-ab65-45b2-a375-3741cd4362b6"
       }
     ],
-    "used_designators": "SW1,RV1,R1-2,D1-10,#PWR1-6,#FLG1-4,BT1-2,U1-2",
+    "used_designators": "SW1-2,RV1,R1-2,D1-10,#PWR1-6,#FLG1-4,BT1-2,U1-2",
     "variants": []
   },
   "sheets": [

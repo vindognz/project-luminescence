@@ -1,3 +1,24 @@
+const int HIGH = 1;
+const int LOW = 0;
+const int OUTPUT = 0;
+const int INPUT = 0;
+const int INPUT_PULLUP = 0;
+const int PB1;
+const int PB2;
+const int PB3;
+
+void pinMode(int PIN, int MODE) {}
+void digitalWrite(int PIN, int MODE) {}
+void analogWrite(int PIN, int MODE) {}
+int digitalRead(int PIN) {}
+int analogRead(int PIN) {}
+int millis() {}
+int sin(int THETA) {}
+
+#include <stdint.h>
+
+
+
 const int LED_PIN = PB1;
 const int BUTTON_PIN = PB2;
 const int BRIGHTNESS_PIN = PB3;
@@ -52,20 +73,21 @@ void loop() {
 }
 
 void handleLED() {
+    int rawBrightness = analogRead(BRIGHTNESS_PIN);
+    uint8_t brightnessScale = (uint8_t)(rawBrightness / 4);
+    
     switch (currentMode) {
         case MODE_OFF:
             analogWrite(LED_PIN, 0);
             break;
-        
+            
         case MODE_ON:
-            analogWrite(LED_PIN, 255);
+            analogWrite(LED_PIN, brightnessScale);
             break;
-        
+            
         case MODE_FADE: {
-            // smooth breathing effect with gamma correction
-            // 2 second period (2000ms)
-            float breathe = (sin(millis() / 300.0) + 1.0) / 2.0;  // 0 to 1
-            uint8_t brightness = gamma8((uint8_t)(breathe * 255));
+            float breathe = (sin(millis() / 1000.0) + 1.0) / 2.0;
+            uint8_t brightness = gamma8((uint8_t)(breathe * brightnessScale));
             analogWrite(LED_PIN, brightness);
             break;
         }
