@@ -36,6 +36,6 @@ Full source files included:
 - **Firmware** with clean git history (`firmware/`)
 
 See `BOM.csv` for component suppliers and part numbers.<br>
-(and change the silkscreen message lmao)
+(change the silkscreen message though lmao)
 
 ---
