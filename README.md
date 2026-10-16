@@ -1,7 +1,5 @@
 # ✨ **Project Luminescence** ✨
 
-[![View PCB on KiCanvas](https://hack.club/pcb-badge)](https://kicanvas.org/?repo=https://github.com/vindognz/project-luminescence/tree/main/pcb)
-
 <img src='images/pcb-final.png' width=400>
 
 Project Luminescence is a custom heart shaped PCB with 10 red LEDs and a trimpot for analog brightness control.
