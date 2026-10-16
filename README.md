@@ -1,41 +1,50 @@
-# **Project Luminescence** ✨
+# ✨ **Project Luminescence** ✨
 
-A custom heart-shaped PCB with 10 red LEDs and smooth brightness control. A handmade birthday gift built for my girlfriend :)
+[![View PCB on KiCanvas](https://hack.club/pcb-badge)](https://kicanvas.org/?repo=https://github.com/vindognz/project-luminescence/tree/main/pcb)
 
----
+<img src='images/pcb-final.png' width=400>
 
-## **Hardware:**
+Project Luminescence is a custom heart shaped PCB with 10 red LEDs and a trimpot for analog brightness control.
 
-- **Microcontroller**: ATtiny85-20PU (low power consumption)
-- **Power**: CR2032 coin cell battery (mounted on back)
-- **LEDs**: 10× 5mm red LEDs arranged around the heart perimeter
-- **Input**: 6mm tactile push button (for mode cycling)
-- **Brightness Control**: 1kΩ potentiometer for analog LED dimming
-- **Power Switch**: SPDT slide switch (on/off control on back)
-- **PCB**: 70×70mm blue FR-4, 2-layer, white silkscreen
+Flip the switch on the back, then press the button on the front to cycle between off, on, and a slow fade mode. Use the trimpot on the back to tune the brightness.
 
----
+I designed this as a birthday present for my girlfriend!
 
-## **Firmware:**
+## Hardware:
+- ATtiny85 microcontroller!
+- Back-mounted CR2032
+- 10x 5mm red LEDs around the PCB perimeter
+- 6mm tactile button for mode cycling
+- 1kΩ potentiometer for manual brightness tuning
+- Back mounted SPDT slide switch as a master on/off switch
+- 70x70mm, 2 layer blue PCB with white silkscreen and a ground pour
 
-### Current Features:
+## CAD Model:
+I opted for a pretty PCB instead of any form of case, so no 3D design files.
+
+However, I was scared to omit this section, so `cad/pcb.step` is just the populated PCB, exported from KiCad.
+
+<img src='images/pcb-3d.png' width=300>
+
+## PCB:
+This is my PCB. I designed it in KiCad!
+
+<img src='images/pcb-schematic.png' width=500>
+
+<img src='images/pcb-layout.png' width=300>
+
+## Firmware Features
 - 50ms button debouncing
-- Mode cycling: OFF → ON → FADE
-- Gamma-corrected PWM brightness control
-- Smooth sine-wave breathing effect
-- Analog trimpot brightness scaling
+- Press the button to cycle OFF ⇨ ON ⇨ FADE 
+- Gamma corrected smooth sine wave breathing
+- Analog trimpot brightness control
 
----
+## BOM
+The full bill of materials with links and USD prices is in [`BOM.csv`](BOM.csv)
 
-## **Reproduction**
+## Showcase
+Check it out in action:
 
-Full source files included:
-- **KiCad schematic & PCB layout** (`kicad/`)
-- **Gerber files** for manufacturing (`kicad/gerbers/`)
-- **BOM.csv** for component sourcing
-- **Firmware** with clean git history (`firmware/`)
+[Watch the showcase video](https://www.youtube.com/watch?v=EI6_KILgyM8)
 
-See `BOM.csv` for component suppliers and part numbers.<br>
-(change the silkscreen message though lmao)
-
----
+### Thanks for voting :)

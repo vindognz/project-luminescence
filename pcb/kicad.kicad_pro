@@ -179,6 +179,7 @@
         "footprint_symbol_field_mismatch": "warning",
         "footprint_symbol_mismatch": "warning",
         "footprint_type_mismatch": "ignore",
+        "hole_aspect_ratio": "error",
         "hole_clearance": "error",
         "hole_to_hole": "warning",
         "holes_co_located": "warning",
@@ -334,8 +335,19 @@
       "via_stack_presets": [],
       "zones_allow_external_fillets": false
     },
+    "idf_export": {
+      "calculate_height_from_models": true,
+      "include_dnp": true,
+      "include_unspecified": true,
+      "origin_mode": 2,
+      "part_number_field": "Value",
+      "units": 0,
+      "user_origin_x": 0.0,
+      "user_origin_y": 0.0
+    },
     "ipc2581": {
       "bom_rev": "",
+      "custom_sections": false,
       "dist": "",
       "distpn": "",
       "internal_id": "",
@@ -593,16 +605,18 @@
       "unresolved_variable": "error",
       "variant_symbol_incompatible": "warning",
       "variant_symbol_invalid": "error",
-      "wire_dangling": "error"
+      "wire_dangling": "error",
+      "wired_implicit_power": "warning"
     }
   },
   "libraries": {
+    "pinned_design_block_libs": [],
     "pinned_footprint_libs": [],
     "pinned_symbol_libs": []
   },
   "meta": {
     "filename": "kicad.kicad_pro",
-    "version": 3
+    "version": 4
   },
   "net_settings": {
     "classes": [
@@ -644,7 +658,7 @@
       "netlist": "",
       "plot": "gerbers/drill/",
       "specctra_dsn": "",
-      "step": "",
+      "step": "../cad/kicad.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""
@@ -746,7 +760,7 @@
       "sort_asc": true,
       "sort_field": "Reference"
     },
-    "bus_aliases": {},
+    "bus_aliases": null,
     "compare_symbols": {
       "dnp_flags": false,
       "exclude_from_board_flags": true,
@@ -802,7 +816,7 @@
         "uuid": "5c04a1b4-ab65-45b2-a375-3741cd4362b6"
       }
     ],
-    "used_designators": "SW1-2,RV1,R1-2,D1-10,#PWR1-6,#FLG1-4,BT1-2,U1-2",
+    "used_designators": "#FLG1-4,#PWR1-6,BT1-2,D1-10,R1-2,RV1,SW1-2,U1-2",
     "variants": []
   },
   "sheets": [

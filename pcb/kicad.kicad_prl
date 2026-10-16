@@ -52,7 +52,9 @@
       "conflict_shadows",
       "shapes",
       "board_outline_area",
-      "ly_points"
+      "ly_points",
+      "subgrids",
+      "via_stitching"
     ],
     "visible_layers": "ffffffff_ffffffff_ffffffff_ffffffff",
     "zone_display_mode": 0
@@ -65,7 +67,7 @@
   },
   "meta": {
     "filename": "kicad.kicad_prl",
-    "version": 5
+    "version": 7
   },
   "net_inspector_panel": {
     "col_hidden": [
